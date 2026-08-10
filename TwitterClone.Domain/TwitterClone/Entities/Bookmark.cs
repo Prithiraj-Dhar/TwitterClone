@@ -1,24 +1,15 @@
 ﻿namespace TwitterClone.Entities;
 
-public class Bookmark
+public class Bookmark : BaseEntity
 {
-    private Guid _id;
     private Guid _userId;
     private Guid _tweetId;
-    private DateTime _createdAt;
-    private DateTime _modifiedAt;
-
-    public Bookmark()
+    
+    public Bookmark() : base(Guid.NewGuid())
     {
-        _id = Guid.NewGuid();
-        _createdAt = DateTime.UtcNow;
-    }
 
-    public Guid Id
-    {
-        get { return _id; }
     }
-
+    
     public Guid UserId
     {
         get { return _userId; }
@@ -31,15 +22,9 @@ public class Bookmark
         set { _tweetId = value; }
     }
 
-    public DateTime CreatedAt
+    public override string DescribeRecord()
     {
-        get { return _createdAt; }
+        var baseRecord = base.DescribeRecord();
+        return $"{baseRecord}, UserId: {UserId}, TweetId: {TweetId}";
     }
-
-    public DateTime ModifiedAt
-    {
-        get { return _modifiedAt; }
-        set { _modifiedAt = value; }
-    }
-
 }
