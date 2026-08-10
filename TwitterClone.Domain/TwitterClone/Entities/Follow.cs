@@ -1,16 +1,14 @@
 ﻿namespace TwitterClone.Entities;
 
-public class User
+public class Follow
 {
-    
     private Guid _id;
-    private string _firstName;
-    private string _lastName;
-    private string _email;
+    private Guid _followerId;
+    private Guid _followingId;
     private DateTime _createdAt;
     private DateTime _modifiedAt;
 
-    public User()
+    public Follow()
     {
         _id = Guid.NewGuid();
         _createdAt = DateTime.UtcNow;
@@ -21,21 +19,16 @@ public class User
         get { return _id; }
     }
 
-    public string FirstName
+    public Guid FollowerId
     {
-        get { return _firstName; }
-        set { _firstName = value; }
-    }
-    public string LastName
-    {
-        get { return _lastName; }
-        set { _lastName = value; }
+        get { return _followerId; }
+        set { _followerId = value; }
     }
 
-    public string Email
+    public Guid FollowingId
     {
-        get { return _email;  }
-        set { _email = value;  }
+        get { return _followingId; }
+        set { _followingId = value; }
     }
 
     public DateTime CreatedAt
@@ -48,6 +41,4 @@ public class User
         get { return _modifiedAt; }
         set { _modifiedAt = value; }
     }
-    
-    
 }
