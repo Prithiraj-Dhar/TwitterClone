@@ -1,0 +1,12 @@
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+
+# .NET build output
+bin/
+obj/
+
+# Environment files
+.env
