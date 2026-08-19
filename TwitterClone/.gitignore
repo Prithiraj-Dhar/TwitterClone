@@ -1,0 +1,99 @@
+
+# =========================
+# .NET / C# / ASP.NET Core
+# =========================
+
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains Rider / ReSharper
+.idea/
+*.sln.iml
+*.DotSettings.user
+
+# Rider project files
+_ReSharper*/
+*.[Rr]e[Ss]harper*
+*.DotSettings
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Core
+wwwroot/lib/
+
+# Logs
+*.log
+logs/
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+
+# Coverage
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Publish output
+publish/
+[Pp]ublish/
+*.publishsettings
+
+# User-specific files
+*.rsuser
+
+# Azure / deployment
+AppPackages/
+BundleArtifacts/
+*.appx
+*.appxbundle
+*.appxupload
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Local configuration / secrets
+appsettings.Local.json
+appsettings.*.Local.json
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.cache
+
+# Generated files
+Generated/
