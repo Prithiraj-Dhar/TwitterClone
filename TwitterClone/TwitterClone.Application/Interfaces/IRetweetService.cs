@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TwitterClone.Application.DTOs;
+
+namespace TwitterClone.Application.Interfaces
+{
+    public interface IRetweetService
+    {
+        RetweetDto? CreateRetweet(CreateRetweetDto createRetweetDto);
+        RetweetDto? GetRetweetById(Guid id);
+        List<RetweetDto> GetRetweets(Guid? userId, Guid? tweetId);
+        RetweetDto? UpdateRetweet(Guid id, UpdateRetweetDto updateRetweetDto);
+        bool DeleteRetweet(Guid id);
+    }
+}
