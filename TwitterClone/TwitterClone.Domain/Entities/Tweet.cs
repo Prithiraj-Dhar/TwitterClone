@@ -62,5 +62,6 @@ namespace TwitterClone.Domain.Entities
             }
             return true;
         }
+
     }
 }
