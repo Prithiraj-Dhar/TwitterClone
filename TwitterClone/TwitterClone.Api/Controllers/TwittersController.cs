@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using TwitterClone.Domain.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TwitterClone.Api.Controllers
 {
@@ -9,30 +7,31 @@ namespace TwitterClone.Api.Controllers
     public class TwittersController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public TwittersController(IConfiguration configuration)
+
+        public TwittersController(
+            IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-
         [HttpGet]
         public IActionResult GetTweets()
         {
-            var tweets = new List<Tweet>
+            var tweets = new List<object>
             {
-                new Tweet("Hello World!")
+                new
                 {
-                    UserId = Guid.NewGuid(), Content = "Hello World!"
+                    UserId = Guid.NewGuid(),
+                    Content = "Hello, world!",
                 },
-                new Tweet("This is a tweet.")
+                new
                 {
-                    UserId = Guid.NewGuid(), Content = "This is a tweet."
-                }
-                
+                    UserId = Guid.NewGuid(),
+                    Content = "This is my second tweet.",
+                },
             };
-            
+
             return Ok(tweets);
         }
-
     }
 }

@@ -7,11 +7,85 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <ProjectReference Include="..\TwitterClone.Application\TwitterClone.Application.csproj" />
+    <ProjectReference Include="..\TwitterClone.Domain\TwitterClone.Domain.csproj" />
+    <ProjectReference Include="..\TwitterClone.Infrastructure\TwitterClone.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TwitterClone.Domain\TwitterClone.Domain.csproj" />
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\sqlcese40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\sqlceqp40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\sqlceme40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\sqlceer40EN.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\sqlcecompact40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\sqlceca40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\Microsoft.VC90.CRT\msvcr90.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x86\native\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\sqlcese40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\sqlceqp40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\sqlceme40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\sqlceer40EN.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\sqlcecompact40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\sqlceca40.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\Microsoft.VC90.CRT\msvcr90.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\User\.nuget\packages\umbraco.sqlserverce\4.0.0.1\build\..\runtimes\win-x64\native\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.1" />
   </ItemGroup>
 
 </Project>

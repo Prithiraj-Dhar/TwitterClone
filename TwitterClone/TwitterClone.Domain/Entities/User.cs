@@ -31,6 +31,8 @@
             set { _email = value; }
         }
 
+        public string PhoneNumber { get; set; }
+
         private List<Guid> _followers = new List<Guid>();
         private List<Guid> _inComingNotifications = new List<Guid>();
 

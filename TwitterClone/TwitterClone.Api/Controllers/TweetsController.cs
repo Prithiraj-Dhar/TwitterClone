@@ -1,90 +1,97 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using TwitterClone.Api.Data;
-using TwitterClone.Api.DTOs;
-using TwitterClone.Domain.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using TwitterClone.Application.DTOs;
+using TwitterClone.Application.Interfaces;
 
 namespace TwitterClone.Api.Controllers
 {
+
+    // api/tweets
     [Route("api/[controller]")]
     [ApiController]
     public class TweetsController : ControllerBase
     {
-        private readonly TweetRepository _tweetRepository;
-        public TweetsController(TweetRepository tweetRepository) 
+
+        private readonly ITweetService _tweetService;
+
+        public TweetsController(
+            ITweetService tweetService)
         {
-            _tweetRepository = tweetRepository;
+            _tweetService = tweetService;
         }
 
 
         // GET /api/tweets?userId={userId}
         [HttpGet]
+        [ProducesResponseType(typeof(List<TweetDto>), StatusCodes.Status200OK)]
         public IActionResult GetTweets([FromQuery] Guid? userId)
         {
-            var tweet = _tweetRepository.GetTweets();
-
-            return Ok(tweet);
+            return Ok(_tweetService.GetTweets(userId));
         }
 
         // GET /api/tweets/{id}
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(TweetDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetTweetById([FromRoute] Guid id)
         {
-            var tweet = _tweetRepository.GetTweetByID(id);
+            var tweet = _tweetService.GetTweetById(id);
+
+            if (tweet == null)
+            {
+                return NotFound();
+            }
 
             return Ok(tweet);
         }
 
         // POST /api/tweets
         [HttpPost]
+        [ProducesResponseType(typeof(TweetDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult CreateTweet([FromBody] CreateTweetDto createTweetDto)
         {
-            if (string.IsNullOrWhiteSpace(createTweetDto.content))
+            var createdTweet = _tweetService.CreateTweet(createTweetDto);
+
+            if (createdTweet == null)
             {
-                return BadRequest("Content fields are required!");
+                // Content is already validated by [ApiController], so the only failure left is an unknown user.
+                return BadRequest($"User '{createTweetDto.UserId}' does not exist.");
             }
 
-            var tweet = new Tweet(Guid.NewGuid(), createTweetDto.content); 
-            var createdTweet = _tweetRepository.AddTweet(tweet);
-
-            return Ok(createdTweet);
+            return CreatedAtAction(nameof(GetTweetById), new { id = createdTweet.Id }, createdTweet);
         }
 
         // PUT /api/tweets/{id}
         [HttpPut("{id}")]
-        public IActionResult UpdateTweet([FromRoute] Guid id, [FromBody] CreateTweetDto createTweetDto)
+        [ProducesResponseType(typeof(TweetDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult UpdateTweet([FromRoute] Guid id, [FromBody] UpdateTweetDto updateTweetDto)
         {
-            var tweet = _tweetRepository.GetTweetByID(id);
+            var tweet = _tweetService.UpdateTweet(id, updateTweetDto);
 
             if (tweet == null)
             {
                 return NotFound();
             }
-
-            tweet.Content = createTweetDto.content;
-
-            _tweetRepository.UpdateTweet(tweet);
 
             return Ok(tweet);
         }
 
         // DELETE /api/tweets/{id}
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeleteTweet([FromRoute] Guid id)
         {
-            var tweet = _tweetRepository.GetTweetByID(id);
+            var isDeleted = _tweetService.DeleteTweet(id);
 
-            if (tweet == null)
+            if (isDeleted == false)
             {
                 return NotFound();
             }
 
-            var isDeleted = _tweetRepository.DeleteTweet(tweet);
-
-            return Ok(isDeleted);
+            return NoContent();
         }
     }
-
 }
-
-

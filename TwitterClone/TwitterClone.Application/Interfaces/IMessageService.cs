@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TwitterClone.Application.DTOs;
+
+namespace TwitterClone.Application.Interfaces
+{
+    public interface IMessageService
+    {
+        MessageDto? SendMessage(CreateMessageDto createMessageDto);
+        MessageDto? GetMessageById(Guid id);
+        List<MessageDto> GetMessages(Guid? senderId, Guid? receiverId);
+        List<MessageDto> GetConversation(Guid userId, Guid otherUserId);
+        MessageDto? UpdateMessage(Guid id, UpdateMessageDto updateMessageDto);
+        MessageDto? MarkMessageAsRead(Guid id);
+        bool DeleteMessage(Guid id);
+    }
+}
